@@ -14,13 +14,6 @@ export default async function handler(req, res) {
                 res.status(400).json({ success: false })
             }
             break;
-        case 'POST':
-            try {
-                User.create(req.body)
-                res.status(201).json({ success: true, data: req.body })
-            } catch (error) {
-                res.status(400).json({ success: false })
-            }
         case 'DELETE':
             try {
                 User.deleteOne({ _id: req.body._id })
