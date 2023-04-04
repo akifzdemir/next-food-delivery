@@ -24,11 +24,13 @@ export default async function handler(req, res) {
             const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' })
             res.status(201).json({ success: true, data: token })
         } catch (error) {
+
             console.log(error)
-            res.status(400).json({ success: false })
+            res.status(400).json({ success: false, data: error })
         }
     } else {
         res.status(400).json({ success: false })
     }
 
 }
+

@@ -14,6 +14,7 @@ export default async function handler(req, res) {
         case 'GET':
             try {
                 const city = await City.findById(id)
+
                 if (!city) {
                     return res.status(400).json({ success: false })
                 }

@@ -1,4 +1,5 @@
 import dbConnect from "@/lib/dbConnect";
+import verifyJWT from "@/middlewares/verifyJWT";
 import User from "@/models/User";
 
 export default async function handler(req, res) {
@@ -11,7 +12,7 @@ export default async function handler(req, res) {
                 const users = await User.find({})
                 res.status(200).json({ data: users })
             } catch (error) {
-                res.status(400).json({ success: false })
+                res.status(400).json({ success: false, data: error })
             }
             break;
         case 'DELETE':
@@ -22,7 +23,7 @@ export default async function handler(req, res) {
                 res.status(400).json({ success: false })
             }
         default:
-            res.status(400).json({ success: false })
+            res.status(400).json({ success: false, data: "asb" })
             break;
     }
 }

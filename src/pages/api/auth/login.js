@@ -11,7 +11,7 @@ export default async function handler(req, res) {
     if (method === 'POST') {
         try {
             const user = await User.findOne({ email: email })
-            const passwordMatch = bcrypt.compare(password, user.password)
+            const passwordMatch = await bcrypt.compare(password, user.password)
             if (!passwordMatch) {
                 res.status(401).json({ success: false, data: "Invalid password" })
                 return;
