@@ -1,9 +1,10 @@
 import AuthContext from '@/context/AuthContext'
 import { useContext, useState } from 'react'
+import { toast } from 'react-toastify'
 
 export default function Register({ cities }) {
     const [formData, setFormData] = useState({})
-    // const { auth } = useContext(AuthContext)
+    const { login } = useContext(AuthContext)
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -16,14 +17,17 @@ export default function Register({ cities }) {
                     'Content-Type': 'application/json'
                 }
             })
-
             const data = await response.json()
-            setAuth(true)
-            router.push("/")
+
+            if (data.success === true) {
+                login(data.data)
+                toast.success("Kayıt başarılı.")
+            } else {
+                toast.error(data.data)
+            }
         } catch (error) {
             console.log(error)
         }
-        console.log(data)
     }
 
     const handleChange = (event) => {

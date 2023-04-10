@@ -12,7 +12,7 @@ export default async function handler(req, res) {
         try {
             const user = await User.findOne({ email: req.body.email })
             if (user) {
-                res.status(400).json({ success: false, data: 'Email already exist.' })
+                res.status(400).json({ success: false, data: 'Email zaten kayıtlı.' })
                 return;
             }
             const salt = await bycrpt.genSalt(10)

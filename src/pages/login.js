@@ -1,10 +1,12 @@
 import AuthContext from '@/context/AuthContext'
+import Cookies from 'js-cookie'
 import { useRouter } from 'next/router'
 import { useContext, useState } from 'react'
+import { toast } from 'react-toastify'
 
 export default function Login() {
     const [formData, setFormData] = useState({})
-    const { setAuth, auth } = useContext(AuthContext)
+    const { login } = useContext(AuthContext)
     const router = useRouter()
 
     const handleSubmit = async (event) => {
@@ -19,9 +21,13 @@ export default function Login() {
                 }
             })
             const data = await response.json()
-            setAuth(true)
-            router.push("/")
-
+            if (data.success === true) {
+                login(data.data)
+                toast.success("Giriş Başarılı")
+                router.push("/")
+            } else {
+                toast.error(data.data)
+            }
         } catch (error) {
             console.log(error)
         }
