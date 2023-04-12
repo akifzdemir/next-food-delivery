@@ -1,4 +1,5 @@
 import dbConnect from "@/lib/dbConnect";
+import verifyJWT from "@/middlewares/verifyJWT";
 import Restaurant from "@/models/Restaurant";
 
 export default async function handler(req, res) {
@@ -16,11 +17,14 @@ export default async function handler(req, res) {
             break;
         case 'POST':
             try {
+                const id = await verifyJWT(req.headers.authorization)
+                req.body.user = id
                 Restaurant.create(req.body)
                 res.status(201).json({ success: true, data: req.body })
             } catch (error) {
-                res.status(400).json({ success: false })
+                res.status(400).json({ success: false, data: error.message })
             }
+            break;
         default:
             res.status(400).json({ success: false })
             break;

@@ -11,21 +11,26 @@ const AuthContext = createContext()
 
 export const AuthProvider = ({ children }) => {
 
-    const [user, setUser] = useState({ userId: 0, userName: "", email: "" })
+    const [user, setUser] = useState({})
     const [auth, setAuth] = useState(false)
     const router = useRouter();
 
-    const login = (token) => {
+    const login = async (token) => {
         setAuth(true)
         Cookies.set("token", token)
+        const decode = await jwtDecode(token)
+        setUser(decode.user)
         router.push("/")
     }
 
-    const isLoggedIn = () => {
+    const isLoggedIn = async () => {
         const token = Cookies.get("token")
         if (token) {
             setAuth(true)
+            const decode = jwtDecode(token)
+            setUser(decode.user)
         } else {
+            setUser({})
             setAuth(false)
         }
     }
@@ -33,6 +38,7 @@ export const AuthProvider = ({ children }) => {
     const logout = () => {
         setAuth(false)
         Cookies.remove("token")
+        setUser({})
         toast.success("Çıkış yapıldı")
         router.push("/")
     }

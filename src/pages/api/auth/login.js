@@ -14,10 +14,10 @@ export default async function handler(req, res) {
             const user = await User.findOne({ email: email })
             const passwordMatch = await bcrypt.compare(password, user.password)
             if (!passwordMatch) {
-                res.status(401).json({ success: false, data: "Yanlış şifre" })
+                res.status(401).json({ success: false, data: "Yanlış şifre !" })
                 return;
             }
-            const payload = { email: user.email, id: user._id, userName: user.firstName + " " + user.lastName }
+            const payload = { user: { email: user.email, id: user._id, userName: user.firstName + " " + user.lastName } }
             const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' })
             // res.setHeader('Set-Cookie', cookie.serialize('auth_token', token, {
             //     httpOnly: false,

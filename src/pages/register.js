@@ -56,7 +56,7 @@ export default function Register({ cities }) {
                 <input className='p-3 shadow-md rounded-2xl' type="password" name="password" placeholder='Şifre' onChange={handleChange} />
                 <input className='p-3 shadow-md rounded-2xl' type="text" name="phone" placeholder='Telefon' onChange={handleChange} />
                 <textarea className='p-3 shadow-md rounded-2xl' name="address" placeholder='Address' onChange={handleChange} />
-                <button className='shadow-sm rounded-md p-3 bg-slate-400 text-white' type="submit">Tamamla</button>
+                <button className='shadow-sm rounded-md p-3 bg-pink-600 text-white' type="submit">Tamamla</button>
             </form>
         </div>
 

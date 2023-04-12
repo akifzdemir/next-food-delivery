@@ -4,7 +4,7 @@ import React, { useContext } from 'react'
 import { BsPersonCircle } from 'react-icons/bs'
 
 export default function Navbar() {
-    const { auth, logout } = useContext(AuthContext)
+    const { auth, logout, user } = useContext(AuthContext)
     return (
         <div>
             <header className='
@@ -16,7 +16,7 @@ export default function Navbar() {
              items-center
              h-16
              '>
-                <h1 className='font-semibold'>Başlık</h1>
+                <Link href={'/'}><h1 className='font-semibold'>Ana Sayfa</h1></Link>
                 <ul className='flex flex-row items-center gap-10'>
                     {
                         !auth
@@ -32,9 +32,10 @@ export default function Navbar() {
                             :
                             <>
                                 <div className="flex items-center space-x-4">
+                                    <Link href={"/addRestaurant"}><button>Restoran ekle</button></Link>
                                     <BsPersonCircle className="w-10 h-10 rounded-full" />
                                     <div className="font-medium ">
-                                        <div>Jese Leos</div>
+                                        <div>{user.userName}</div>
                                         <button onClick={logout} className="text-sm text-gray-500 dark:text-gray-400">Çıkış yap</button>
                                     </div>
                                 </div>
