@@ -4,8 +4,7 @@ import { useRouter } from 'next/router'
 import React, { useContext, useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 
-export default function addRestaurant({ cities }) {
-    const { user } = useContext(AuthContext)
+export default function AddRestaurant({ cities }) {
     const [formData, setFormData] = useState([])
     const token = Cookies.get("token")
     const router = useRouter()

@@ -17,8 +17,8 @@ export default async function handler(req, res) {
             break;
         case 'POST':
             try {
-                const id = await verifyJWT(req.headers.authorization)
-                req.body.user = id
+                const userId = await verifyJWT(req.headers.authorization)
+                req.body.user = userId
                 Restaurant.create(req.body)
                 res.status(201).json({ success: true, data: req.body })
             } catch (error) {

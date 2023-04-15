@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }) => {
         const token = Cookies.get("token")
         if (token) {
             setAuth(true)
-            const decode = jwtDecode(token)
+            const decode = await jwtDecode(token)
             setUser(decode.user)
         } else {
             setUser({})
