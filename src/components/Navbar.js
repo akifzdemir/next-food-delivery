@@ -32,6 +32,7 @@ export default function Navbar() {
                             :
                             <>
                                 <div className="flex items-center space-x-4">
+                                    <Link href={"/myRestaurants"}><button>Restoranlarım</button></Link>
                                     <Link href={"/addRestaurant"}><button>Restoran ekle</button></Link>
                                     <BsPersonCircle className="w-10 h-10 rounded-full" />
                                     <div className="font-medium ">

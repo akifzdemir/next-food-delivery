@@ -1,6 +1,5 @@
 import dbConnect from "@/lib/dbConnect";
-import verifyJWT from "@/middlewares/verifyJWT";
-import Product from "@/models/Product";
+import Category from "@/models/Category";
 
 export default async function handler(req, res) {
     await dbConnect()
@@ -9,23 +8,19 @@ export default async function handler(req, res) {
     switch (method) {
         case 'GET':
             try {
-                const products = await Product.find({})
-                res.status(200).json({ data: products })
+                const categories = await Category.find({})
+                res.status(200).json({ data: categories })
             } catch (error) {
                 res.status(400).json({ success: false })
             }
             break;
         case 'POST':
             try {
-                const userId = await verifyJWT(req.headers.authorization)
-                req.body.user = userId
-                Product.create(req.body)
+                Category.create(req.body)
                 res.status(201).json({ success: true, data: req.body })
             } catch (error) {
-                console.log(error)
                 res.status(400).json({ success: false })
             }
-            break;
         default:
             res.status(400).json({ success: false })
             break;

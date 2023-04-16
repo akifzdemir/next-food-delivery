@@ -1,5 +1,6 @@
 import AuthContext from '@/context/AuthContext'
 import Cookies from 'js-cookie'
+import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 
 export default function MyRestaurants() {
@@ -33,6 +34,9 @@ export default function MyRestaurants() {
                                 Şehir
                             </th>
                             <th scope="col" className="px-6 py-3">
+                                Ürün ekle
+                            </th>
+                            <th scope="col" className="px-6 py-3">
                                 Düzenle
                             </th>
                             <th scope="col" className="px-6 py-3">
@@ -49,6 +53,11 @@ export default function MyRestaurants() {
                                     </th>
                                     <td className="px-6 py-4">
                                         {restaurant.city.name}
+                                    </td>
+                                    <td className="px-6 py-4 text-right">
+                                        <Link href={{ pathname: "addProduct/[restaurantId]", query: { restaurantId: restaurant._id } }}>
+                                            <button className="font-medium text-blue-600  hover:underline">Ekle</button>
+                                        </Link>
                                     </td>
                                     <td className="px-6 py-4 text-right">
                                         <button className="font-medium text-blue-600  hover:underline">Düzenle</button>

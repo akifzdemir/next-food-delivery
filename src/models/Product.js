@@ -17,10 +17,6 @@ const ProductSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Category'
     },
-    image: {
-        type: String,
-        required: true
-    },
     restaurant: {
         type: mongoose.Schema.Types.ObjectId,
         required: true
