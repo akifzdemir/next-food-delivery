@@ -34,6 +34,17 @@ export const AuthProvider = ({ children }) => {
             setAuth(false)
         }
     }
+    const checkTokenExpired = () => {
+        const token = Cookies.get("token");
+        if (token) {
+            const decodedToken = jwtDecode(token);
+            const currentTime = Date.now() / 1000;
+            if (decodedToken.exp < currentTime) {
+                logout();
+                console.log("token expired")
+            }
+        }
+    };
 
     const logout = () => {
         setAuth(false)
@@ -44,6 +55,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     useEffect(() => {
+        checkTokenExpired()
         isLoggedIn()
     }, [auth])
 

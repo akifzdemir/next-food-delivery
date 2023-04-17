@@ -1,7 +1,8 @@
 import AuthContext from '@/context/AuthContext'
 import Cookies from 'js-cookie'
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
 
 export default function MyRestaurants() {
 
@@ -9,7 +10,7 @@ export default function MyRestaurants() {
     const [restaurants, setRestaurants] = useState([])
     const token = Cookies.get("token")
 
-    useEffect(() => {
+    const getData = useCallback(() => {
         fetch(`http://localhost:3000/api/restaurant/user/`, {
             method: 'GET',
             headers: {
@@ -18,14 +19,28 @@ export default function MyRestaurants() {
         })
             .then((res) => res.json())
             .then((json) => setRestaurants(json.data))
-        console.log(restaurants)
-    }, [token])
+    }, [])
+
+    useEffect(() => {
+        getData()
+    }, [getData])
+
+    const deleteRestaurant = async (restaurantId) => {
+        await fetch(`http://localhost:3000/api/restaurant/${restaurantId}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `${token}`,
+            }
+        })
+        getData()
+        toast.success("Restoran Silindi.")
+    }
 
     return (
         <div className='flex h-screen justify-center items-center'>
             <div className="relative h-1/2 overflow-x-auto shadow-md sm:rounded-lg">
-                <table className="w-full text-lg text-left text-gray-500 ">
-                    <thead className="text-xl text-gray-700 uppercase bg-gray-50">
+                <table className="w-full text-lg text-center text-gray-500 ">
+                    <thead className="text-xl text-center text-gray-700 uppercase bg-gray-50">
                         <tr>
                             <th scope="col" className="px-6 py-3">
                                 Restoran Adı
@@ -54,22 +69,20 @@ export default function MyRestaurants() {
                                     <td className="px-6 py-4">
                                         {restaurant.city.name}
                                     </td>
-                                    <td className="px-6 py-4 text-right">
+                                    <td className="px-6 py-4 text-center">
                                         <Link href={{ pathname: "addProduct/[restaurantId]", query: { restaurantId: restaurant._id } }}>
                                             <button className="font-medium text-blue-600  hover:underline">Ekle</button>
                                         </Link>
                                     </td>
-                                    <td className="px-6 py-4 text-right">
+                                    <td className="px-6 py-4 text-center">
                                         <button className="font-medium text-blue-600  hover:underline">Düzenle</button>
                                     </td>
-                                    <td className="px-6 py-4 text-right">
-                                        <button className="font-medium text-blue-600  hover:underline">Sil</button>
+                                    <td className="px-6 py-4 text-center">
+                                        <button onClick={() => deleteRestaurant(restaurant._id)} className="font-medium text-blue-600  hover:underline">Sil</button>
                                     </td>
                                 </tr>
                             ))
                         }
-
-
                     </tbody>
                 </table>
             </div>
