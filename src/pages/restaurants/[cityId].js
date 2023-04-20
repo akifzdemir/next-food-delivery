@@ -1,3 +1,4 @@
+import Card from '@/components/Card';
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 
@@ -16,10 +17,10 @@ export default function Restaurants() {
     }, [cityId])
 
     return (
-        <div className='flex h-screen items-center'>
+        <div className='flex h-screen items-center justify-center'>
             {
                 restaurants.map((restaurant) => (
-                    <div>{restaurant.name}</div>
+                    <Card name={restaurant.name} address={restaurant.address} />
                 ))
             }
         </div>

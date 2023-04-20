@@ -1,12 +1,14 @@
+import { useRouter } from "next/router"
 import { useState } from "react"
 
 export default function Home({ cities }) {
 
   const [formData, setFormData] = useState([])
+  const router = useRouter()
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(formData)
+    router.push(`/restaurants/${formData.city}`)
   }
 
   const handleChange = (event) => {
