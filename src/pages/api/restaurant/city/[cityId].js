@@ -13,7 +13,7 @@ export default async function handler(req, res) {
     switch (method) {
         case 'GET':
             try {
-                const restaurants = await Restaurant.find({ city: cityId })
+                const restaurants = await Restaurant.find({ city: cityId }).populate('city')
                 res.status(200).json({ data: restaurants, success: true })
             } catch (error) {
                 console.log(error)

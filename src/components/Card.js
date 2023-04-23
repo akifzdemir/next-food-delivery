@@ -5,7 +5,7 @@ export default function Card({ name, address }) {
         <div
             className="
                 flex flex-row h-32 rounded-lg items-center
-                w-1/2
+                w-full
                 bg-white p-3 shadow-lg
                hover:shadow-2xl
                hover:scale-110

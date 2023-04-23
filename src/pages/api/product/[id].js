@@ -17,7 +17,7 @@ export default async function handler(req, res) {
                 if (!product) {
                     return res.status(400).json({ success: false })
                 }
-                res.status(200).json({ success: true, data: Product })
+                res.status(200).json({ success: true, data: product })
             } catch (error) {
                 res.status(400).json({ success: false })
             }
@@ -34,7 +34,7 @@ export default async function handler(req, res) {
                 if (!product) {
                     return res.status(400).json({ success: false })
                 }
-                res.status(200).json({ success: true, data: Product })
+                res.status(200).json({ success: true, data: product })
             } catch (error) {
                 res.status(400).json({ success: false })
             }

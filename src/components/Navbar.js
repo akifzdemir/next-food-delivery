@@ -12,6 +12,7 @@ export default function Navbar() {
              bg-white
              justify-between
              px-28
+             top-0
              border-b border-gray-200 
              items-center
              h-16
