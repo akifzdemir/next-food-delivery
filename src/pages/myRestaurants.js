@@ -63,9 +63,9 @@ export default function MyRestaurants() {
                         {
                             restaurants.map((restaurant) => (
                                 <tr key={restaurant._id} className="bg-white border-b  hover:bg-gray-50">
-                                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowra">
+                                    <td scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowra">
                                         {restaurant.name}
-                                    </th>
+                                    </td>
                                     <td className="px-6 py-4">
                                         {restaurant.city.name}
                                     </td>

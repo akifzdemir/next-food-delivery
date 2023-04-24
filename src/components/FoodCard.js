@@ -35,7 +35,10 @@ export default function FoodCard({ product }) {
                 </p>
 
             </div>
-            <button onClick={() => addToCart(product)} className='text-center flex font-bold items-center shadow-xl p-5 rounded-lg'>
+            <button onClick={() => addToCart(product)} className='
+            bg-pink-600 text-white gap-3 text-center 
+            flex font-bold items-center shadow-xl p-5 rounded-md
+            '>
                 <BsFillCartPlusFill size={"35px"} />
                 Sepete ekle
             </button>
