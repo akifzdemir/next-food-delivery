@@ -1,12 +1,41 @@
 import CartContext from "@/context/CartContext"
+import Cookies from "js-cookie"
 import { useContext } from "react"
 
 export default function Cart() {
 
     const { products } = useContext(CartContext)
-    console.log(products)
+    const token = Cookies.get("token")
+
+    const handleOrder = async () => {
+
+        const orderData = products.map((product) => {
+            return {
+                product: product._id,
+                restaurant: product.restaurant._id
+            }
+        })
+
+        await fetch('/api/order', {
+            method: 'POST',
+            headers: {
+                'Authorization': `${token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(orderData)
+        }).then(response => {
+            if (response.ok) {
+                console.log('Sipariş verildi!')
+            } else {
+                console.log('Sipariş verilirken bir hata oluştu.')
+            }
+        })
+
+    }
+
     return (
-        <div className='flex h-screen justify-center items-center'>
+        <div className='flex gap-5 flex-col h-screen justify-center items-center'>
+            <h1 className="text-2xl font-bold">Sepetim</h1>
             <div className="relative h-1/2 overflow-x-auto shadow-md sm:rounded-lg">
                 <table className="w-full text-lg text-center text-gray-500 ">
                     <thead className="text-xl text-center text-gray-700 uppercase bg-gray-50">
@@ -33,7 +62,7 @@ export default function Cart() {
                                         {product.restaurant.name}
                                     </td>
                                     <td className="px-6 py-4 text-center">
-                                        {product.price}
+                                        {product.price}₺
                                     </td>
                                 </tr>
                             ))
@@ -41,6 +70,7 @@ export default function Cart() {
                     </tbody>
                 </table>
             </div>
+            <button className='shadow-sm rounded-md p-3 bg-pink-600 text-white' onClick={() => handleOrder()} type="submit">Sipariş ver</button>
 
         </div>
     )
