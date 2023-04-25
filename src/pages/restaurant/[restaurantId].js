@@ -18,7 +18,7 @@ export default function Restaurant() {
     }, [restaurantId])
 
     return (
-        <div className='flex flex-col h-full gap-10 items-center mt-20'>
+        <div className='flex flex-col h-full gap-10 items-center mt-20 mb-10'>
             <h1 className='text-xl font-bold'> Ürünler :</h1>
             {
                 products.map((product) => (

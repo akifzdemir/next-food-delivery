@@ -1,4 +1,6 @@
 import mongoose from "mongoose";
+import Product from "./Product";
+import Restaurant from "./Restaurant";
 
 
 const OrderSchema = mongoose.Schema({
@@ -17,8 +19,8 @@ const OrderSchema = mongoose.Schema({
     status: {
         type: String,
         required: true,
-        enum: ['Pending', 'Accepted', 'Rejected', 'Delivered'],
-        default: 'Pending'
+        enum: ['Bekliyor', 'Hazırlanıyor', 'Reddedildi', 'Teslim edildi'],
+        default: 'Bekliyor'
     },
     date: {
         type: Date,

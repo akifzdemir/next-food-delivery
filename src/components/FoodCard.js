@@ -10,8 +10,8 @@ export default function FoodCard({ product }) {
         <div
             className="
                 flex flex-row h-32 rounded-lg items-center
-                w-1/2
-                justify-around
+                w-1/2   
+                p-10
                 bg-white  shadow-lg  
                hover:shadow-2xl
                hover:scale-110
@@ -19,15 +19,15 @@ export default function FoodCard({ product }) {
                duration-300
                "
         >
-            <div className='flex items-center justify-center content-center'>
+            <div className='flex items-center w-1/4 justify-center content-center'>
                 <div>
                     <MdFastfood size={"50px"} />
                 </div>
 
             </div>
-            <div className="text-center">
+            <div className="text-center w-1/2">
                 <h3 className='font-semibold text-2xl'>{product.name}</h3>
-                <p>
+                <p className='text-sm'>
                     {product.description}
                 </p>
                 <p className='font-light'>
@@ -37,7 +37,7 @@ export default function FoodCard({ product }) {
             </div>
             <button onClick={() => addToCart(product)} className='
             bg-pink-600 text-white gap-3 text-center 
-            flex font-bold items-center shadow-xl p-5 rounded-md
+            flex font-bold w-1/4 items-center shadow-xl p-5 rounded-md
             '>
                 <BsFillCartPlusFill size={"35px"} />
                 Sepete ekle

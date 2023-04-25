@@ -20,7 +20,7 @@ export default function Restaurants() {
     }, [cityId])
 
     return (
-        <div className='flex flex-col h-full gap-10 items-center justify-center mt-20'>
+        <div className='flex flex-col h-full gap-10 items-center justify-center mt-20 mb-10'>
             <h1 className='text-xl font-bold'>{cityName} Şehrindeki Restoranlar :</h1>
             {
                 restaurants.map((restaurant) => (

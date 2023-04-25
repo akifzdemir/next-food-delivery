@@ -1,6 +1,7 @@
 import CartContext from "@/context/CartContext"
 import Cookies from "js-cookie"
 import { useContext } from "react"
+import { toast } from "react-toastify"
 
 export default function Cart() {
 
@@ -26,6 +27,7 @@ export default function Cart() {
         }).then(response => {
             if (response.ok) {
                 console.log('Sipariş verildi!')
+                toast.success("Sipariş verildi")
             } else {
                 console.log('Sipariş verilirken bir hata oluştu.')
             }

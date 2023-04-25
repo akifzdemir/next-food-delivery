@@ -33,6 +33,7 @@ export default function Navbar() {
                             :
                             <>
                                 <div className="flex items-center space-x-4">
+                                    <Link href={"/orders"}><button>Siparişlerim</button></Link>
                                     <Link href={"/cart"}><button>Sepetim</button></Link>
                                     <Link href={"/myRestaurants"}><button>Restoranlarım</button></Link>
                                     <Link href={"/addRestaurant"}><button>Restoran ekle</button></Link>
