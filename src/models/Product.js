@@ -1,4 +1,6 @@
 import mongoose from "mongoose";
+import Restaurant from "./Restaurant";
+import Category from "./Category";
 
 const ProductSchema = mongoose.Schema({
     name: {

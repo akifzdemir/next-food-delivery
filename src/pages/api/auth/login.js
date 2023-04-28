@@ -17,7 +17,7 @@ export default async function handler(req, res) {
                 res.status(401).json({ success: false, data: "Yanlış şifre !" })
                 return;
             }
-            const payload = { user: { email: user.email, id: user._id, userName: user.firstName + " " + user.lastName } }
+            const payload = { user: { email: user.email, id: user._id, userName: user.firstName + " " + user.lastName, role: user.role } }
             const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' })
             // res.setHeader('Set-Cookie', cookie.serialize('auth_token', token, {
             //     httpOnly: false,

@@ -1,4 +1,6 @@
 import mongoose from "mongoose";
+import City from "./City";
+import User from "./User";
 
 const RestaurantSchema = mongoose.Schema({
     name: {

@@ -29,6 +29,7 @@ export const AuthProvider = ({ children }) => {
             setAuth(true)
             const decode = await jwtDecode(token)
             setUser(decode.user)
+            console.log(decode)
         } else {
             setUser({})
             setAuth(false)

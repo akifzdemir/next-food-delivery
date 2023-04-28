@@ -19,7 +19,8 @@ export default function Home({ cities }) {
   }
   return (
     <>
-      <div className="flex h-screen items-center justify-center w-full">
+      <div className="flex flex-col gap-10 h-screen items-center justify-center w-full">
+        <h1 className="text-4xl text-center font-bold">Şehrinizdeki Restororanları görmek için <br /> şehir seçin: </h1>
         <form onSubmit={handleSubmit} className='flex flex-col rounded-2xl justify-center gap-10 shadow-2xl p-10  w-1/2'>
           <select className='p-3 shadow-md rounded-2xl w-full' name='city' onChange={handleChange}>
             <option value="">Şehir</option>
