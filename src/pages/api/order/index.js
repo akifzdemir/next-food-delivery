@@ -18,8 +18,9 @@ export default async function handler(req, res) {
         case 'POST':
             try {
                 const userId = await verifyJWT(req.headers.authorization)
-                req.body[0].user = userId
-                console.log(req.body)
+                req.body.map((order) => (
+                    order.user = userId
+                ))
                 Order.create(req.body)
                 res.status(201).json({ success: true, data: req.body })
             } catch (error) {
