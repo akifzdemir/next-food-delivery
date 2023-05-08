@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import Product from "./Product";
 import Restaurant from "./Restaurant";
+import User from "./User";
 
 
 const OrderSchema = mongoose.Schema({

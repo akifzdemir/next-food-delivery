@@ -52,7 +52,7 @@ export default function MyRestaurants() {
                                 Ürün ekle
                             </th>
                             <th scope="col" className="px-6 py-3">
-                                Düzenle
+                                Siparişler
                             </th>
                             <th scope="col" className="px-6 py-3">
                                 Sil
@@ -75,7 +75,9 @@ export default function MyRestaurants() {
                                         </Link>
                                     </td>
                                     <td className="px-6 py-4 text-center">
-                                        <button className="font-medium text-blue-600  hover:underline">Düzenle</button>
+                                        <Link href={{ pathname: "orders/[restaurantId]", query: { restaurantId: restaurant._id } }}>
+                                            <button className="font-medium text-blue-600  hover:underline">Siparişler</button>
+                                        </Link>
                                     </td>
                                     <td className="px-6 py-4 text-center">
                                         <button onClick={() => deleteRestaurant(restaurant._id)} className="font-medium text-blue-600  hover:underline">Sil</button>
