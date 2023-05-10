@@ -22,9 +22,8 @@ export default function Register({ cities }) {
             const data = await response.json()
 
             if (data.success === true) {
-                login(data.data)
                 toast.success("Kayıt başarılı.")
-                router.push("/")
+                router.push("/login")
             } else {
                 toast.error(data.data)
             }

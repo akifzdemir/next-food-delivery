@@ -1,4 +1,5 @@
 import dbConnect from "@/lib/dbConnect"
+import verifyJWT from "@/middlewares/verifyJWT"
 import Order from "@/models/Order"
 
 
@@ -17,29 +18,28 @@ export default async function handler(req, res) {
                 if (!order) {
                     return res.status(400).json({ success: false })
                 }
-                res.status(200).json({ success: true, data: Order })
+                res.status(200).json({ success: true, data: order })
             } catch (error) {
                 res.status(400).json({ success: false })
             }
             break
-
         case 'PUT':
             try {
-                const userId = await verifyJWT(req.headers.authorization)
-                req.body.user = userId
-                const order = await Order.findByIdAndUpdate(id, req.body, {
+                console.log(req.body)
+                await verifyJWT(req.headers.authorization)
+                const order = await Order.findByIdAndUpdate(id, { status: req.body }, {
                     new: true,
                     runValidators: true,
                 })
                 if (!order) {
-                    return res.status(400).json({ success: false })
+                    return res.status(400).json({ success: false, data: "Bulunamadı" })
                 }
-                res.status(200).json({ success: true, data: Order })
+                res.status(200).json({ success: true, data: order })
             } catch (error) {
+                console.log(error)
                 res.status(400).json({ success: false })
             }
             break
-
         case 'DELETE':
             try {
                 const userId = await verifyJWT(req.headers.authorization)

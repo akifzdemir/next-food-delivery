@@ -14,7 +14,7 @@ export default function Navbar() {
              px-28
              top-0
              border-b border-gray-200 
-             items-center
+             items-center   
              h-16
              '>
                 <Link href={'/'}><h1 className='font-semibold'>Ana Sayfa</h1></Link>
@@ -50,7 +50,6 @@ export default function Navbar() {
                                 </div>
                             </>
                     }
-
                 </ul>
             </header>
         </div>

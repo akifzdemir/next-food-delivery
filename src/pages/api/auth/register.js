@@ -19,10 +19,7 @@ export default async function handler(req, res) {
             const hash = await bycrpt.hash(req.body.password, salt)
             body.password = hash
             const newUser = await User.create(body)
-
-            const payload = { user: { email: newUser.email, id: newUser._id, role: newUser.role, userName: user.firstName + " " + user.lastName } }
-            const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' })
-            res.status(201).json({ success: true, data: token })
+            res.status(201).json({ success: true, data: "Kayıt Başarılı" })
         } catch (error) {
 
             console.log(error)
