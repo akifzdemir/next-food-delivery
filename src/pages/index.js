@@ -1,5 +1,6 @@
 import { useRouter } from "next/router"
 import { useState } from "react"
+import { toast } from "react-toastify"
 
 export default function Home({ cities }) {
 
@@ -8,7 +9,11 @@ export default function Home({ cities }) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    router.push(`/restaurants/${formData.city}`)
+    if (formData.city) {
+      router.push(`/restaurants/${formData.city}`)
+    } else {
+      toast.error("Şehir Seçiniz")
+    }
   }
 
   const handleChange = (event) => {

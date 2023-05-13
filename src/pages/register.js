@@ -5,7 +5,6 @@ import { toast } from 'react-toastify'
 
 export default function Register({ cities }) {
     const [formData, setFormData] = useState({})
-    const { login } = useContext(AuthContext)
     const router = useRouter()
 
     const handleSubmit = async (event) => {

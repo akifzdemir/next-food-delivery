@@ -49,6 +49,5 @@ export default function Login() {
                 <button className='shadow-sm rounded-md p-3 bg-pink-600 text-white' type="submit">Tamamla</button>
             </form>
         </div>
-
     )
 }

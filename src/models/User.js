@@ -1,4 +1,5 @@
 import mongoose from "mongoose"
+import City from "./City"
 
 
 const UserSchema = mongoose.Schema({
