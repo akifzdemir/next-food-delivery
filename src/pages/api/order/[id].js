@@ -26,7 +26,7 @@ export default async function handler(req, res) {
         case 'PUT':
             try {
                 console.log(req.body)
-                await verifyJWT(req.headers.authorization)
+                verifyJWT(req.headers.authorization)
                 const order = await Order.findByIdAndUpdate(id, { status: req.body }, {
                     new: true,
                     runValidators: true,
@@ -42,7 +42,7 @@ export default async function handler(req, res) {
             break
         case 'DELETE':
             try {
-                const userId = await verifyJWT(req.headers.authorization)
+                const { userId } = verifyJWT(req.headers.authorization)
                 req.body.user = userId
                 const deletedOrder = await Order.deleteOne({ _id: id })
                 if (!deletedOrder) {

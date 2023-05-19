@@ -12,7 +12,7 @@ export default async function handler(req, res) {
     switch (method) {
         case 'GET':
             try {
-                const userId = await verifyJWT(req.headers.authorization)
+                const { userId } = verifyJWT(req.headers.authorization)
                 const restaurants = await Restaurant.find({ user: userId }).populate("city")
                 res.status(200).json({ data: restaurants, success: true })
             } catch (error) {

@@ -11,7 +11,8 @@ export default function Navbar() {
             fixed flex flex-row w-full
              bg-white
              justify-between
-             px-28
+             md:px-28
+             px-10
              top-0
              border-b border-gray-200 
              items-center   

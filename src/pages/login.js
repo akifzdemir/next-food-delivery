@@ -46,7 +46,7 @@ export default function Login() {
             <form className='flex flex-col rounded-md justify-center gap-5 shadow-2xl p-10 h-1/2 w-1/2' onSubmit={handleSubmit}>
                 <input className='p-3 shadow-md rounded-2xl' type="email" name="email" placeholder='Email' onChange={handleChange} />
                 <input className='p-3 shadow-md rounded-2xl' type="password" name="password" placeholder='Şifre' onChange={handleChange} />
-                <button className='shadow-sm rounded-md p-3 bg-pink-600 text-white' type="submit">Tamamla</button>
+                <button className='shadow-sm rounded-md p-3 bg-pink-600 text-white' type="submit">Giriş Yap</button>
             </form>
         </div>
     )

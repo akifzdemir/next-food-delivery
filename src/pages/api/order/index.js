@@ -17,7 +17,7 @@ export default async function handler(req, res) {
             break;
         case 'POST':
             try {
-                const userId = await verifyJWT(req.headers.authorization)
+                const { userId } = verifyJWT(req.headers.authorization)
                 req.body.map((order) => (
                     order.user = userId
                 ))

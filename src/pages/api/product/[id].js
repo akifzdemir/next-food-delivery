@@ -25,7 +25,7 @@ export default async function handler(req, res) {
 
         case 'PUT':
             try {
-                const userId = await verifyJWT(req.headers.authorization)
+                const { userId } = verifyJWT(req.headers.authorization)
                 req.body.user = userId
                 const product = await Product.findByIdAndUpdate(id, req.body, {
                     new: true,

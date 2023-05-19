@@ -18,7 +18,7 @@ export default async function handler(req, res) {
             const salt = await bycrpt.genSalt(10)
             const hash = await bycrpt.hash(req.body.password, salt)
             body.password = hash
-            const newUser = await User.create(body)
+            await User.create(body)
             res.status(201).json({ success: true, data: "Kayıt Başarılı" })
         } catch (error) {
 
