@@ -64,6 +64,7 @@ export const AuthProvider = ({ children }) => {
         setAuth,
         auth,
         user,
+        setUser,
         login,
         logout
     }

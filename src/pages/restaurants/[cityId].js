@@ -1,4 +1,5 @@
 import Card from '@/components/Card';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
@@ -20,13 +21,18 @@ export default function Restaurants() {
     }, [cityId])
 
     return (
-        <div className='flex flex-col h-full gap-10 items-center justify-center mt-20 mb-10'>
-            <h1 className='text-xl font-bold'>{cityName} Şehrindeki Restoranlar :</h1>
-            {
-                restaurants.map((restaurant) => (
-                    <Link className='w-1/2' key={restaurant._id} href={`/restaurant/${restaurant._id}`}><Card name={restaurant.name} address={restaurant.address} /></Link>
-                ))
-            }
+        <div className='flex flex-row items-center px-10 h-screen w-full'>
+            <div className='fixed -z-10'>
+                <Image src={"/undraw_chef_cu-0-r.svg"} width={600} height={500} />
+            </div>
+            <div className='flex flex-col h-full gap-10 items-center justify-center w-full mt-52 mb-10'>
+                <h1 className='text-xl font-bold'>{cityName} Şehrindeki Restoranlar :</h1>
+                {
+                    restaurants.map((restaurant) => (
+                        <Link className='w-full md:w-1/2' key={restaurant._id} href={`/restaurant/${restaurant._id}`}><Card name={restaurant.name} address={restaurant.address} /></Link>
+                    ))
+                }
+            </div>
         </div>
     )
 }

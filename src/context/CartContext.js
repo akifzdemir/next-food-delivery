@@ -18,6 +18,7 @@ export const CartProvider = ({ children }) => {
         }
     }
 
+
     const values = {
         products,
         addToCart

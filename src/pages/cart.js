@@ -38,7 +38,7 @@ export default function Cart() {
     return (
         <div className='flex gap-5 flex-col h-screen justify-center items-center'>
             <h1 className="text-2xl font-bold">Sepetim</h1>
-            <div className="relative h-1/2 overflow-x-auto shadow-md sm:rounded-lg">
+            <div className="flex flex-col h-1/2 overflow-x-auto shadow-md sm:rounded-lg">
                 <table className="w-full text-lg text-center text-gray-500 ">
                     <thead className="text-xl text-center text-gray-700 uppercase bg-gray-50">
                         <tr>
@@ -72,8 +72,6 @@ export default function Cart() {
                     </tbody>
                 </table>
             </div>
-            <button className='shadow-sm rounded-md p-3 bg-pink-600 text-white' onClick={() => handleOrder()} type="submit">Sipariş ver</button>
-
         </div>
     )
 }

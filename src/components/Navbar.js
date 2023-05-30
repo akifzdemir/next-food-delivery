@@ -43,7 +43,7 @@ export default function Navbar() {
                                             <Link href={"/addRestaurant"}><button>Restoran ekle</button></Link>
                                         </>
                                     }
-                                    <BsPersonCircle className="w-10 h-10 rounded-full" />
+                                    <Link href={"/myProfile"}> <BsPersonCircle className="w-10 h-10 rounded-full" /></Link>
                                     <div className="font-medium ">
                                         <div>{user.userName}</div>
                                         <button onClick={logout} className="text-sm text-gray-500 dark:text-gray-400">Çıkış yap</button>

@@ -25,7 +25,6 @@ export default async function handler(req, res) {
             break
         case 'PUT':
             try {
-                console.log(req.body)
                 verifyJWT(req.headers.authorization)
                 const order = await Order.findByIdAndUpdate(id, { status: req.body }, {
                     new: true,

@@ -21,7 +21,8 @@ export default function Orders() {
         console.log(orders)
     }, [getData])
     return (
-        <div className='flex h-screen justify-center items-center'>
+        <div className='flex flex-col h-screen justify-center items-center'>
+            <h1 className='text-2xl mb-10 font-bold'>Siparişlerim</h1>
             <div className="relative h-1/2 overflow-x-auto shadow-md sm:rounded-lg">
                 <table className="w-full text-lg text-center text-gray-500 ">
                     <thead className="text-xl text-center text-gray-700 uppercase bg-gray-50">

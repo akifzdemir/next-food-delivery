@@ -37,10 +37,11 @@ export default function MyRestaurants() {
     }
 
     return (
-        <div className='flex h-screen justify-center items-center'>
+        <div className='flex flex-col h-screen justify-center items-center'>
+            <h1 className='text-2xl mb-10 font-bold'>Restoranlarım</h1>
             <div className="relative h-1/2 overflow-x-auto shadow-md sm:rounded-lg">
-                <table className="w-full text-lg text-center text-gray-500 ">
-                    <thead className="text-xl text-center text-gray-700 uppercase bg-gray-50">
+                <table className=" md:w-full text-md md:text-lg text-center text-gray-500 ">
+                    <thead className="text-md md:text-xl text-center text-gray-700 uppercase bg-gray-50">
                         <tr>
                             <th scope="col" className="px-6 py-3">
                                 Restoran Adı
