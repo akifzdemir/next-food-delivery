@@ -49,7 +49,7 @@ export default function myProfile({ cities }) {
 
     return (
         <div className='h-screen flex flex-col  gap-6 items-center justify-center'>
-            <h1 className='text-2xl font-semibold'>{currentUser.firstName}</h1>
+            <h1 className='text-2xl font-semibold'>Profili Güncelle</h1>
             <form className='flex flex-col  justify-center gap-5 shadow-xl rounded-lg p-5 h-auto w-auto' onSubmit={handleSubmit}>
                 <div className='flex flex-row gap-4'>
                     <input

@@ -9,7 +9,6 @@ export default async function handler(req, res) {
         case 'GET':
             try {
                 const cities = await City.find({})
-                console.log(req.headers.authorization)
                 res.status(200).json({ data: cities })
             } catch (error) {
                 res.status(400).json({ success: false })
